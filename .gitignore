@@ -1,0 +1,25 @@
+# 构建产物
+build/
+build-*/
+out/
+vs-solution/
+*.user
+*.autosave
+logs/
+app.log
+
+# Qt 生成文件
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+
+# IDE
+.vs/
+.vscode/
+.idea/
+.qtc_clangd/
+
+# 系统文件
+Thumbs.db
+.DS_Store
