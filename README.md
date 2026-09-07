@@ -15,6 +15,12 @@ v0.8 新增 **MQTT 传输通道**（嵌入式行业常用的消息代理接入�
 - 构建：CMake（≥ 3.16）；本机已验证 MSVC(v14.50) + Qt 6.8.3 编译运行通过
 - 界面：中文，纯代码构建，深色主题 QSS
 
+![运行效果 v0.8：MQTT 通道连接 mock broker，订阅主题收到 2 帧并完成 AA55+CRC16 解码](run-preview-v08.png)
+
+> 左：控制面板（已选 MQTT 通道，代理/端口/发布/订阅主题可配）；
+> 右上：报文表格（2 条 RX 解码行，时间/方向/内容，按类型着色，支持过滤与搜索）；
+> 右下：原始字节 + 运行日志。
+
 ---
 
 ## 一、功能一览
@@ -115,8 +121,13 @@ signals:
 ### 方式 A：Visual Studio 直接打开（推荐日常开发）
 
 双击 `vs-solution/QtHostFramework.slnx`（VS 2026 的新版解决方案格式）即可打开、改代码、
-F7 编译。解决方案由 CMake 生成，添加/删除源文件后改 `CMakeLists.txt`，VS 里重新生成会自动同步。
-命令行重新生成：`cmake -S . -B vs-solution -G "Visual Studio 18 2026" -A x64 -DCMAKE_PREFIX_PATH=C:/Qt/6.8.3/msvc2022_64`
+F7 编译。解决方案由 CMake 生成（发布压缩包内含现成版本；**本仓库为保持源码整洁未提交
+生成物**），克隆后执行下面一行命令即可生成，之后添加/删除源文件改 `CMakeLists.txt`
+再重新生成即可同步：
+
+```bash
+cmake -S . -B vs-solution -G "Visual Studio 18 2026" -A x64 -DCMAKE_PREFIX_PATH=C:/Qt/6.8.3/msvc2022_64
+```
 
 ### 方式 B：CMake + Ninja 命令行
 
